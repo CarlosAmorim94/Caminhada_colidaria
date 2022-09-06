@@ -8,13 +8,13 @@ function App() {
   const [users, setUsers] = useState([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
-  const [CPF, setCPF] = useState();
+  const [CPF, setCPF] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [team, setTeam] = useState("");
-  const [kit, setKit] = useState();
+  const [kit, setKit] = useState("");
   const [chooseShirt, setChooseShirt] = useState(false);
-  const [sizeShirt, setSizeShirt] = useState();
+  const [sizeShirt, setSizeShirt] = useState("");
 
   const userCollectionRef = collection(firestore, "users");
 
@@ -181,7 +181,7 @@ function App() {
               id="BL-M"
               name="sizeShirt"
               value="BL-M"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="BL-M">BL-M</label>
             <input
@@ -189,7 +189,7 @@ function App() {
               id="PP"
               name="sizeShirt"
               value="PP"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="PP">PP</label>
             <input
@@ -197,7 +197,7 @@ function App() {
               id="P"
               name="sizeShirt"
               value="P"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="P">P</label>
             <input
@@ -205,7 +205,7 @@ function App() {
               id="M"
               name="sizeShirt"
               value="M"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="M">M</label>
             <input
@@ -213,7 +213,7 @@ function App() {
               id="G"
               name="sizeShirt"
               value="G"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="G">G</label>
             <input
@@ -221,7 +221,7 @@ function App() {
               id="GG"
               name="sizeShirt"
               value="GG"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="GG">GG</label>
             <input
@@ -229,7 +229,7 @@ function App() {
               id="XG"
               name="sizeShirt"
               value="XG"
-              onClick={(e) => setSizeShirt(e.target.value)}
+              onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="XG">XG</label>
           </fieldset>
@@ -239,7 +239,7 @@ function App() {
       </form>
 
       <ul>
-        {users.map((user) => (
+        {users.map((user: any) => (
           <li key={user.cpf}>
             <div>{user.nome}</div>
             <div>{user.kit}</div>
