@@ -1,16 +1,15 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.API_KEY,
-  authDomain: import.meta.env.AUTH_DOMAIN,
-  projectId: import.meta.env.PROJECT_ID,
-  storageBucket: import.meta.env.STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.MESSAGING_SENDER_ID,
-  appId: import.meta.env.APP_ID,
+  apiKey: "AIzaSyDzpMN6W9Oil3ngY6LMDWXL72Sg28DQI6o",
+  authDomain: "caminhada-solidaria.firebaseapp.com",
+  projectId: "caminhada-solidaria",
+  storageBucket: "caminhada-solidaria.appspot.com",
+  messagingSenderId: "1022901484357",
+  appId: "1:1022901484357:web:18dfa998887c4ec232dc2c",
+};
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+export const firestore = getFirestore(app);

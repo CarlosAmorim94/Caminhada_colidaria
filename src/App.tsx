@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { Container } from "./styles/AppStyle";
 import InputMask from "react-input-mask";
+import { firestore } from "./Firebase/firebase";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 
 function App() {
+  const [users, setUsers] = useState([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
+  const [CPF, setCPF] = useState();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [team, setTeam] = useState("");
@@ -12,28 +16,20 @@ function App() {
   const [chooseShirt, setChooseShirt] = useState(false);
   const [sizeShirt, setSizeShirt] = useState();
 
-  useEffect(() => {
-    function getRandomIntInclusive(min: number, max: number) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    const uuid = getRandomIntInclusive(200, 600);
-    setId(uuid);
-  }, []);
+  const userCollectionRef = collection(firestore, "users");
 
   const cadastro = {
-    id,
-    Email: email,
+    numero: id,
+    cpf: CPF,
+    email: email,
     nome: name,
-    Telefone: phone,
-    Equipe: team,
-    Kit: kit,
-    TamanhoCamisa: sizeShirt,
+    telefone: phone,
+    equipe: team,
+    kit: kit,
+    camiseta: sizeShirt,
   };
-  const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit} Tamanho da camiseta: ${sizeShirt}`;
 
-  console.log(emailResponse);
+  const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: CPF: ${CPF} , Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit} Tamanho da camiseta: ${sizeShirt}`;
 
   const handleKit1 = (e: any) => {
     setKit(e.target.value);
@@ -44,6 +40,43 @@ function App() {
     setKit(e.target.value);
     setChooseShirt(true);
   };
+
+  const handleForm = async () => {
+    const user = await addDoc(userCollectionRef, cadastro);
+  };
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getUsers();
+  }, []);
+
+  const numeros: any[] = [];
+  users.map((user) => {
+    numeros.push(...numeros, user.numero);
+  });
+  console.log(numeros);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      function getRandomIntInclusive(min: number, max: number) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      let uuid = getRandomIntInclusive(200, 600);
+
+      const existUuid = numeros.some((item) => item.numero == uuid);
+      if (!existUuid) {
+        setId(uuid);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Container>
@@ -79,6 +112,17 @@ function App() {
             placeholder="Digite seu Nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+
+          <label htmlFor="name">CPF:</label>
+          <input
+            required
+            id="cpf"
+            name="cpf"
+            type="text"
+            placeholder="Digite seu CPF"
+            value={CPF}
+            onChange={(e) => setCPF(e.target.value)}
           />
 
           <label htmlFor="phone">Telefone:</label>
@@ -191,8 +235,22 @@ function App() {
           </fieldset>
         )}
 
-        <button>Cadastrar</button>
+        <button onClick={handleForm}>Cadastrar</button>
       </form>
+
+      <ul>
+        {users.map((user) => (
+          <li key={user.cpf}>
+            <div>{user.nome}</div>
+            <div>{user.kit}</div>
+            <div>{user.camiseta}</div>
+            <div>{user.cpf}</div>
+            <div>{user.numero}</div>
+            <div>{user.equipe}</div>
+            <div>{user.email}</div>
+          </li>
+        ))}
+      </ul>
     </Container>
   );
 }
