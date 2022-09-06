@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Container, Content, FieldSet } from "../styles/AppStyle";
+import {
+  Button,
+  Container,
+  Content,
+  FieldSet,
+  FieldSetInformation,
+  FieldSetKit,
+  Legend,
+} from "../styles/AppStyle";
 import InputMask from "react-input-mask";
 import { firestore } from "../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
@@ -84,8 +92,8 @@ function Registration() {
         action="https://formsubmit.co/carlos.av.amorim@gmail.com"
         method="POST"
       >
-        <FieldSet>
-          <legend>Dados para cadastro:</legend>
+        <FieldSetInformation>
+          <Legend>Dados para cadastro:</Legend>
           <input
             type="hidden"
             name="_next"
@@ -93,6 +101,9 @@ function Registration() {
           />
 
           <input type="hidden" name="_autoresponse" value={emailResponse} />
+
+          <label htmlFor="id">Numeração: {id}</label>
+          <input id="id" value={id} type="hidden" name="id" />
 
           <label htmlFor="email">E-mail:</label>
           <input
@@ -145,11 +156,11 @@ function Registration() {
             value={team}
             onChange={(e) => setTeam(e.target.value)}
           />
-          <input disabled type="text" name="id" placeholder={`Seu id: ${id}`} />
-        </FieldSet>
+        </FieldSetInformation>
 
-        <FieldSet>
-          <legend>Escolha seu kit:</legend>
+        <FieldSetKit>
+          <Legend>Escolha seu kit:</Legend>
+
           <input
             type="radio"
             id="kit1"
@@ -169,13 +180,13 @@ function Registration() {
           <label htmlFor="kit2">
             Kit 2 - Numeral, medalha + CAMISETA - R$60,00
           </label>
-        </FieldSet>
+        </FieldSetKit>
 
         {!chooseShirt ? (
           ""
         ) : (
           <FieldSet>
-            <legend>Escolha o tamanho da sua camiseta:</legend>
+            <Legend>Escolha o tamanho da sua camiseta:</Legend>
             <input
               type="radio"
               id="BL-M"
@@ -235,7 +246,7 @@ function Registration() {
           </FieldSet>
         )}
 
-        <button onClick={handleForm}>Cadastrar</button>
+        <Button onClick={handleForm}>Cadastrar</Button>
       </Content>
 
       {/* <ul>
