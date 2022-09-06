@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Container } from "./styles/AppStyle";
+import { Container } from "../styles/AppStyle";
 import InputMask from "react-input-mask";
-import { firestore } from "./Firebase/firebase";
+import { firestore } from "../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
-function App() {
+function Registration() {
   const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
@@ -255,4 +255,4 @@ function App() {
   );
 }
 
-export default App;
+export default Registration;
