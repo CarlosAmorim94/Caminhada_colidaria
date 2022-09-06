@@ -5,7 +5,7 @@ import { firestore } from "./Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");
