@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: Roboto, sans-serif;
     transition: all ease .5s;
     text-decoration: none;
+    letter-spacing: 1px;
   }
   
   html {

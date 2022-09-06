@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container } from "../styles/AppStyle";
+import { Container, Content, FieldSet } from "../styles/AppStyle";
 import InputMask from "react-input-mask";
 import { firestore } from "../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
@@ -80,12 +80,12 @@ function Registration() {
 
   return (
     <Container>
-      <form
+      <Content
         action="https://formsubmit.co/carlos.av.amorim@gmail.com"
         method="POST"
       >
-        <fieldset>
-          <legend>Dados para cadastro</legend>
+        <FieldSet>
+          <legend>Dados para cadastro:</legend>
           <input
             type="hidden"
             name="_next"
@@ -114,7 +114,7 @@ function Registration() {
             onChange={(e) => setName(e.target.value)}
           />
 
-          <label htmlFor="name">CPF:</label>
+          <label htmlFor="cpf">CPF:</label>
           <input
             required
             id="cpf"
@@ -146,10 +146,10 @@ function Registration() {
             onChange={(e) => setTeam(e.target.value)}
           />
           <input disabled type="text" name="id" placeholder={`Seu id: ${id}`} />
-        </fieldset>
+        </FieldSet>
 
-        <fieldset>
-          <legend>Escolha seu kit!</legend>
+        <FieldSet>
+          <legend>Escolha seu kit:</legend>
           <input
             type="radio"
             id="kit1"
@@ -169,13 +169,13 @@ function Registration() {
           <label htmlFor="kit2">
             Kit 2 - Numeral, medalha + CAMISETA - R$60,00
           </label>
-        </fieldset>
+        </FieldSet>
 
         {!chooseShirt ? (
           ""
         ) : (
-          <fieldset>
-            <legend>Escolha o tamanho da sua camiseta</legend>
+          <FieldSet>
+            <legend>Escolha o tamanho da sua camiseta:</legend>
             <input
               type="radio"
               id="BL-M"
@@ -232,13 +232,13 @@ function Registration() {
               onChange={(e) => setSizeShirt(e.target.value)}
             />
             <label htmlFor="XG">XG</label>
-          </fieldset>
+          </FieldSet>
         )}
 
         <button onClick={handleForm}>Cadastrar</button>
-      </form>
+      </Content>
 
-      <ul>
+      {/* <ul>
         {users.map((user: any) => (
           <li key={user.cpf}>
             <div>{user.nome}</div>
@@ -250,7 +250,7 @@ function Registration() {
             <div>{user.email}</div>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </Container>
   );
 }
