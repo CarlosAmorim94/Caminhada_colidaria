@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Bg from "../assets/img/background.jpg";
+import Bg from "../../assets/img/background.jpg";
 
 export const Container = styled.main`
   width: 100vw;
@@ -14,7 +14,7 @@ export const Container = styled.main`
 
 export const Content = styled.form`
   width: 90%;
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding: 1rem;
   border-radius: 1rem;
   display: flex;

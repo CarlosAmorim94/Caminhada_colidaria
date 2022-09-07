@@ -7,12 +7,12 @@ import {
   FieldSetInformation,
   FieldSetKit,
   Legend,
-} from "../styles/AppStyle";
+} from "./styles";
 import InputMask from "react-input-mask";
-import { firestore } from "../Firebase/firebase";
+import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
-function Registration() {
+export const Registration = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
@@ -264,6 +264,4 @@ function Registration() {
       </ul> */}
     </Container>
   );
-}
-
-export default Registration;
+};
