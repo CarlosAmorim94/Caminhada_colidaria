@@ -1,6 +1,5 @@
 import {
   Button,
-  ButtonWhats,
   Container,
   Content,
   Image,
