@@ -49,6 +49,9 @@ export const Home = () => {
         <Button>
           <Link to="/registro">Participar!</Link>
         </Button>
+        <Button>
+          <Link to="/pagamento">QR Code e Pix</Link>
+        </Button>
 
         <SubTitle>Corrida 6km e caminhada 3km</SubTitle>
         <Kits>
