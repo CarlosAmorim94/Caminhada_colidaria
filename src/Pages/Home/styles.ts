@@ -26,17 +26,24 @@ export const Content = styled.article`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: 1024px) {
+    width: 30%;
+  }
 `;
 
 export const Info = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 
 export const Local = styled.img`
   width: 70%;
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
 `;
 
 export const Data = styled.div`
@@ -96,6 +103,7 @@ export const Button = styled.button`
   border: 2px solid white;
   border-radius: 1rem;
   background: rgba(255, 255, 1, 1);
+  color: black;
 
   &:hover {
     border: 2px solid black;
@@ -118,6 +126,10 @@ export const Kits = styled.div`
   p {
     margin-left: 1rem;
     font-size: 0.8rem;
+  }
+
+  @media (min-width: 1024px) {
+    height: 7rem;
   }
 `;
 

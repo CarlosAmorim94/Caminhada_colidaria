@@ -19,7 +19,6 @@ export const Content = styled.form`
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   color: white;
   text-shadow: black 0.1em 0.1em 0.2em;
@@ -28,6 +27,10 @@ export const Content = styled.form`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: 1024px) {
+    width: 30%;
+  }
 `;
 
 export const FieldSetInformation = styled.fieldset`
@@ -123,7 +126,7 @@ export const Button = styled.button`
   text-align: center;
   border: 2px solid white;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 1, 1);
 
   &:hover {
     border: 2px solid black;

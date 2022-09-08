@@ -6,7 +6,6 @@ import {
   Data,
   Day,
   Dom,
-  Image,
   ImageShirt,
   Info,
   Kits,
