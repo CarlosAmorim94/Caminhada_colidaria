@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDzpMN6W9Oil3ngY6LMDWXL72Sg28DQI6o",
-  authDomain: "caminhada-solidaria.firebaseapp.com",
-  projectId: "caminhada-solidaria",
-  storageBucket: "caminhada-solidaria.appspot.com",
-  messagingSenderId: "1022901484357",
-  appId: "1:1022901484357:web:18dfa998887c4ec232dc2c",
+  apiKey: process.env.FIREBASE_APIKEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+  projectId: process.env.FIREBASE_PROJECTID,
+  storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.FIREBASE_APPID,
 };
 
 const app = initializeApp(firebaseConfig);
