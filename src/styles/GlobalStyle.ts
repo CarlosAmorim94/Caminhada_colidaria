@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
+import Bg from "../assets/img/background.jpg";
 
 export const GlobalStyle = createGlobalStyle`
+
   * {
     margin: 0;
     padding: 0;
@@ -14,6 +16,9 @@ export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background: url(${Bg}) no-repeat;
+    background-size: cover;
+    background-position: center;
   }
   
   a {
@@ -23,4 +28,5 @@ export const GlobalStyle = createGlobalStyle`
       text-decoration: none;
     }
   }
+
 `;

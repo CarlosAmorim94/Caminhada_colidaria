@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Bg from "../../assets/img/background.jpg";
 
 export const Container = styled.section`
   width: 100vw;
@@ -7,9 +6,6 @@ export const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(${Bg}) no-repeat;
-  background-size: cover;
-  background-position: center;
 `;
 
 export const Content = styled.article`
@@ -131,12 +127,14 @@ export const Icons = styled.div`
 
   a {
     text-decoration: none;
+    color: inherit;
 
     &:visited,
     :link,
     :hover,
     :active {
       text-decoration: none;
+      color: inherit;
     }
   }
 `;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Bg from "../../assets/img/background.jpg";
 
 export const Container = styled.main`
   width: 100vw;
@@ -7,9 +6,6 @@ export const Container = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(${Bg}) no-repeat;
-  background-size: cover;
-  background-position: center;
 `;
 
 export const Content = styled.form`

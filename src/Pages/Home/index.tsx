@@ -1,11 +1,22 @@
+import Logo from "../../assets/img/logo.png";
+import { Link } from "react-router-dom";
+import Kit1 from "../../assets/img/kit1.png";
+import Kit2 from "../../assets/img/kit2.png";
+import largada from "../../assets/img/largada.png";
+import sponsor from "../../assets/img/sponsor.png";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
 import {
   Button,
+  ButtonPay,
   City,
   Container,
   Content,
   Data,
   Day,
   Dom,
+  Help,
+  Icons,
   ImageShirt,
   Info,
   Kits,
@@ -18,12 +29,6 @@ import {
   SubTitle,
   Title,
 } from "./styles";
-import Logo from "../../assets/img/logo.png";
-import { Link } from "react-router-dom";
-import Kit1 from "../../assets/img/kit1.png";
-import Kit2 from "../../assets/img/kit2.png";
-import largada from "../../assets/img/largada.png";
-import sponsor from "../../assets/img/sponsor.png";
 
 export const Home = () => {
   return (
@@ -49,9 +54,19 @@ export const Home = () => {
         <Button>
           <Link to="/registro">Participar!</Link>
         </Button>
-        <Button>
-          <Link to="/pagamento">QR Code e Pix</Link>
-        </Button>
+        <Help>
+          <ButtonPay>
+            <Link to="/pagamento">QR Code/Pix</Link>
+          </ButtonPay>
+          <Icons>
+            <a href="https://api.whatsapp.com/send?phone=5514981851114">
+              <IoLogoWhatsapp />
+            </a>
+            <a href="mailto:circuitosolidario@hotmail.com">
+              <MdEmail />
+            </a>
+          </Icons>
+        </Help>
 
         <SubTitle>Corrida 6km e caminhada 3km</SubTitle>
         <Kits>

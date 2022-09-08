@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import Bg from "../../assets/img/background.jpg";
 
 export const Container = styled.section`
   width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: url(${Bg}) no-repeat;
-  background-size: cover;
-  background-position: center;
 `;
 
 export const Content = styled.article`
@@ -152,4 +148,40 @@ export const Obs = styled.p`
 
 export const Sponsorship = styled.img`
   width: 100%;
+`;
+
+export const Help = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ButtonPay = styled(Button)`
+  width: 50%;
+  margin: 0;
+  padding: 0;
+`;
+
+export const Icons = styled.div`
+  width: 50%;
+  display: flex;
+  font-size: 3rem;
+  justify-content: space-around;
+  align-items: center;
+  color: rgba(255, 255, 1, 1);
+
+  a {
+    text-decoration: none;
+    color: rgba(255, 255, 1, 1);
+
+    &:visited,
+    :link,
+    :hover,
+    :active {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
 `;
