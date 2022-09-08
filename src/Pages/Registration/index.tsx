@@ -12,7 +12,6 @@ import {
 import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { Link } from "react-router-dom";
 
 export const Registration = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -106,18 +105,18 @@ export const Registration = () => {
   return (
     <Container>
       <Content
-        action="https://formsubmit.co/carlos.av.amorim@gmail.com"
+        action="https://formsubmit.co/circuitosolidario@hotmail.com"
         method="POST"
       >
+        <input
+          type="hidden"
+          name="_next"
+          value="https://caminhadasolidaria.vercel.app/pagamento"
+        />
+
+        <input type="hidden" name="_autoresponse" value={emailResponse} />
         <FieldSetInformation>
           <Legend>Dados para cadastro:</Legend>
-          <input
-            type="hidden"
-            name="_next"
-            value="https://carlosamorim.vercel.app/emailsent"
-          />
-
-          <input type="hidden" name="_autoresponse" value={emailResponse} />
 
           <label htmlFor="id">Numeração: {id}</label>
           <input id="id" value={id} type="hidden" name="id" />
@@ -126,6 +125,7 @@ export const Registration = () => {
           <input
             required
             id="email"
+            name="email"
             type="email"
             placeholder="Digite seu E-mail"
             value={email}
