@@ -71,14 +71,14 @@ export const Home = () => {
         <SubTitle>Corrida 6km e caminhada 3km</SubTitle>
         <Kits>
           <div>
-            <KitTitle>Kit 1 - R$30,00</KitTitle>
+            <KitTitle>Kit 1 - R$ 30,00</KitTitle>
             <p>Numeral e medalha</p>
           </div>
           <ImageShirt src={Kit1} />
         </Kits>
         <Kits>
           <div>
-            <KitTitle>Kit 2 - R$60,00</KitTitle>
+            <KitTitle>Kit 2 - R$ 60,00</KitTitle>
             <p>Numeral, medalha e camiseta</p>
           </div>
           <ImageShirt src={Kit2} />
