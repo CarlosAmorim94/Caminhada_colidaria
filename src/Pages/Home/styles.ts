@@ -29,7 +29,7 @@ export const Content = styled.article`
 
   nav {
     width: 100%;
-    margin: 1rem 0;
+    margin-top: 1rem;
   }
 `;
 
@@ -50,7 +50,7 @@ export const SubTitle = styled.h2`
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 `;
 
 export const Button = styled.button`
@@ -103,4 +103,8 @@ export const Obs = styled.p`
   font-size: 0.8rem;
   text-align: start;
   margin-top: 1rem;
+`;
+
+export const Sponsorship = styled.img`
+  width: 100%;
 `;

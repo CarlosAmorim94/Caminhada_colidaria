@@ -7,6 +7,7 @@ import {
   Kits,
   KitTitle,
   Obs,
+  Sponsorship,
   SubTitle,
   Title,
 } from "./styles";
@@ -14,6 +15,7 @@ import Logo from "../../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import Kit1 from "../../assets/img/kit1.png";
 import Kit2 from "../../assets/img/kit2.png";
+import sponsor from "../../assets/img/sponsor.png";
 
 export const Home = () => {
   return (
@@ -50,6 +52,8 @@ export const Home = () => {
           As 50 primeiras pessoas ganharão a personalização atrás da camiseta.
         </Obs>
         <Obs>Delicioso café da manhã após a prova.</Obs>
+        <SubTitle>Patrocínio:</SubTitle>
+        <Sponsorship src={sponsor} />
       </Content>
     </Container>
   );

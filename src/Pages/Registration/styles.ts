@@ -139,3 +139,13 @@ export const Legend = styled.legend`
   margin-bottom: 1rem;
   margin-top: 1rem;
 `;
+
+export const Error = styled.span`
+  color: red;
+  font-weight: bold;
+  background-color: yellow;
+  text-align: center;
+  padding: 0.5rem;
+  text-shadow: none;
+  border-radius: 1rem;
+`;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -7,10 +7,12 @@ import {
   FieldSetInformation,
   FieldSetKit,
   Legend,
+  Error,
 } from "./styles";
 import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 export const Registration = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -23,19 +25,9 @@ export const Registration = () => {
   const [kit, setKit] = useState("");
   const [chooseShirt, setChooseShirt] = useState(false);
   const [sizeShirt, setSizeShirt] = useState("");
+  const [existCPF, setExistCPF] = useState(false);
 
   const userCollectionRef = collection(firestore, "users");
-
-  const cadastro = {
-    numero: id,
-    cpf: CPF,
-    email: email,
-    nome: name,
-    telefone: phone,
-    equipe: team,
-    kit: kit,
-    camiseta: sizeShirt,
-  };
 
   const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: CPF: ${CPF} , Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit} Tamanho da camiseta: ${sizeShirt}`;
 
@@ -49,6 +41,16 @@ export const Registration = () => {
     setChooseShirt(true);
   };
 
+  const cadastro = {
+    numero: id,
+    cpf: CPF,
+    email: email,
+    nome: name,
+    telefone: phone,
+    equipe: team,
+    kit: kit,
+    camiseta: sizeShirt,
+  };
   const handleForm = async () => {
     const user = await addDoc(userCollectionRef, cadastro);
   };
@@ -63,9 +65,8 @@ export const Registration = () => {
 
   const numeros: any[] = [];
   users.map((user) => {
-    numeros.push(...numeros, user.numero);
+    numeros.push(user.numero);
   });
-  console.log(numeros);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +78,7 @@ export const Registration = () => {
 
       let uuid = getRandomIntInclusive(200, 600);
 
-      const existUuid = numeros.some((item) => item.numero == uuid);
+      const existUuid = numeros.includes(uuid);
       if (!existUuid) {
         setId(uuid);
       }
@@ -85,6 +86,22 @@ export const Registration = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    let cpfList: any[] = [];
+    users.map((user) => {
+      cpfList.push(user.cpf);
+    });
+
+    const duplicateCPF = cpfList.includes(CPF);
+    if (duplicateCPF) {
+      console.log(duplicateCPF);
+      setExistCPF(true);
+    } else {
+      setExistCPF(false);
+    }
+  }, [CPF]);
+  console.log(CPF);
 
   return (
     <Container>
@@ -126,7 +143,8 @@ export const Registration = () => {
           />
 
           <label htmlFor="cpf">CPF:</label>
-          <input
+          <InputMask
+            mask="99999999999"
             required
             id="cpf"
             name="cpf"
@@ -135,6 +153,7 @@ export const Registration = () => {
             value={CPF}
             onChange={(e) => setCPF(e.target.value)}
           />
+          {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
 
           <label htmlFor="phone">Telefone:</label>
           <InputMask
@@ -246,7 +265,7 @@ export const Registration = () => {
           </FieldSet>
         )}
 
-        <Button onClick={handleForm}>Cadastrar</Button>
+        {existCPF ? "" : <Button onClick={handleForm}>Cadastrar</Button>}
       </Content>
 
       {/* <ul>
