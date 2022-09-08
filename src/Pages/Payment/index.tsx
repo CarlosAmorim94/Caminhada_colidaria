@@ -1,9 +1,13 @@
-import { Container } from "./styles";
+import { Container, Content, Title } from "./styles";
 
 export const Payment = () => {
   return (
     <Container>
-      <h1>tela de pagamento</h1>
+      <Content>
+        <Title>Pagamento</Title>
+        <div>Chave PIX:</div>
+        <p>rpm3311@hotmail.com</p>
+      </Content>
     </Container>
   );
 };

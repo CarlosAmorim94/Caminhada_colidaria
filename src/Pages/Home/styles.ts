@@ -26,14 +26,46 @@ export const Content = styled.article`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-
-  nav {
-    width: 100%;
-    margin-top: 1rem;
-  }
 `;
 
-export const Image = styled.img`
+export const Info = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Local = styled.img`
+  width: 70%;
+`;
+
+export const Data = styled.div`
+  width: 30%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Dom = styled.p`
+  width: 100%;
+  text-align: center;
+  color: rgb(255, 255, 1);
+`;
+export const Day = styled.p`
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+`;
+export const Out = styled(Dom)`
+  font-size: 2rem;
+`;
+export const City = styled(Day)`
+  font-size: 1rem;
+`;
+
+export const Logotype = styled.img`
   width: 100%;
 `;
 
@@ -56,13 +88,14 @@ export const SubTitle = styled.h2`
 export const Button = styled.button`
   width: 100%;
   padding: 1rem;
+  margin-top: 1rem;
   height: 100%;
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   border: 2px solid white;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 1, 1);
 
   &:hover {
     border: 2px solid black;
