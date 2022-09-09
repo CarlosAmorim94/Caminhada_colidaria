@@ -12,6 +12,8 @@ import {
 const Admin: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [originalUsers, setOriginalUsers] = useState<any[]>([]);
+  const [size, setSize] = useState("");
+  const [kit, setKit] = useState("");
 
   const userCollectionRef = collection(firestore, "users");
 
@@ -24,24 +26,14 @@ const Admin: React.FC = () => {
     getUsers();
   }, []);
 
-  function handleInput1(e: any) {
-    const inputValue = "kit1"; // e.target corresponde ao elemento input.
-    setUsers(searchTable(inputValue)); // assumindo `user` como propriedade global do
-    // estado
+  function handleKit(e: any) {
+    setKit(e.target.value);
   }
+  useEffect(() => {
+    setUsers(searchKit(kit));
+  }, [kit]);
 
-  function handleInput2(e: any) {
-    const inputValue = "kit2"; // e.target corresponde ao elemento input.
-    setUsers(searchTable(inputValue)); // assumindo `user` como propriedade global do
-    // estado
-  }
-  function handleInputAll(e: any) {
-    const inputValue = ""; // e.target corresponde ao elemento input.
-    setUsers(searchTable(inputValue)); // assumindo `user` como propriedade global do
-    // estado
-  }
-
-  function searchTable(value: string) {
+  function searchKit(value: string) {
     const filteredUsers = [];
 
     if (value.length === 0) {
@@ -61,65 +53,87 @@ const Admin: React.FC = () => {
     return filteredUsers;
   }
 
+  function handleFilter(e: any) {
+    setSize(e.target.value);
+  }
+
+  useEffect(() => {
+    setUsers(searchSize(size));
+  }, [size]);
+
+  function searchSize(value: string) {
+    const filteredUsers = [];
+
+    if (value.length === 0) {
+      return originalUsers; // ESTE RETORNO IRA RESTAURAR OS DADOS ORIGINAIS DO
+      // USER
+    }
+
+    for (let i = 0; i < users.length; ++i) {
+      const newValue = value.toLowerCase(); // nao redeclarar o value.
+
+      const user = users[i].camiseta.toLowerCase();
+
+      if (user.includes(newValue)) {
+        filteredUsers.push(users[i]);
+      }
+    }
+    return filteredUsers;
+  }
+
   return (
     <Container>
-      {users.length === 0 ? (
-        <div>Carregando dados...</div>
-      ) : (
-        <Table>
-          <thead>
-            <tr>
-              <TableHeadColumn>CPF</TableHeadColumn>
-              <TableHeadColumn>NOME</TableHeadColumn>
-              <TableHeadColumn>NUMERO</TableHeadColumn>
-              <TableHeadColumn>TELEFONE</TableHeadColumn>
-              <TableHeadColumn>E-MAIL</TableHeadColumn>
-              <TableHeadColumn>EQUIPE</TableHeadColumn>
-              <TableHeadColumn>
-                <div>
-                  KIT
-                  <button
-                    onClick={handleInput1}
-                    id="input-table"
-                    placeholder="Filtre um kit: 'kit2'"
-                  >
-                    kit1
-                  </button>
-                  <button
-                    onClick={handleInput2}
-                    id="input-table"
-                    placeholder="Filtre um kit: 'kit2'"
-                  >
-                    kit2
-                  </button>
-                  <button
-                    onClick={handleInputAll}
-                    id="input-table"
-                    placeholder="Filtre um kit: 'kit2'"
-                  >
-                    Todos
-                  </button>
-                </div>
-              </TableHeadColumn>
-              <TableHeadColumn>CAMISETA</TableHeadColumn>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <TableLine key={index}>
-                <TableColumn>{user.cpf}</TableColumn>
-                <TableColumn>{user.nome}</TableColumn>
-                <TableColumn>{user.numero}</TableColumn>
-                <TableColumn>{user.telefone}</TableColumn>
-                <TableColumn>{user.email}</TableColumn>
-                <TableColumn>{user.equipe}</TableColumn>
-                <TableColumn>{user.kit}</TableColumn>
-                <TableColumn>{user.camiseta}</TableColumn>
-              </TableLine>
-            ))}
-          </tbody>
-        </Table>
-      )}
+      <Table>
+        <thead>
+          <tr>
+            <TableHeadColumn>CPF</TableHeadColumn>
+            <TableHeadColumn>NOME</TableHeadColumn>
+            <TableHeadColumn>NUMERO</TableHeadColumn>
+            <TableHeadColumn>TELEFONE</TableHeadColumn>
+            <TableHeadColumn>E-MAIL</TableHeadColumn>
+            <TableHeadColumn>EQUIPE</TableHeadColumn>
+            <TableHeadColumn>
+              <div>
+                KIT
+                <select onChange={handleKit}>
+                  <option>{""}</option>
+                  <option>Kit1</option>
+                  <option>Kit2</option>
+                </select>
+              </div>
+            </TableHeadColumn>
+            <TableHeadColumn>
+              <div>
+                CAMISETA
+                <select onChange={handleFilter}>
+                  <option>{""}</option>
+                  <option>BL-M</option>
+                  <option>PP</option>
+                  <option>P</option>
+                  <option>M</option>
+                  <option>G</option>
+                  <option>GG</option>
+                  <option>XG</option>
+                </select>
+              </div>
+            </TableHeadColumn>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user, index) => (
+            <TableLine key={index}>
+              <TableColumn>{user.cpf}</TableColumn>
+              <TableColumn>{user.nome}</TableColumn>
+              <TableColumn>{user.numero}</TableColumn>
+              <TableColumn>{user.telefone}</TableColumn>
+              <TableColumn>{user.email}</TableColumn>
+              <TableColumn>{user.equipe}</TableColumn>
+              <TableColumn>{user.kit}</TableColumn>
+              <TableColumn>{user.camiseta}</TableColumn>
+            </TableLine>
+          ))}
+        </tbody>
+      </Table>
     </Container>
   );
 };
