@@ -15,6 +15,7 @@ import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import type { NextPage } from "next";
+import { cpf } from "cpf-cnpj-validator";
 
 const Registration: NextPage = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -28,6 +29,7 @@ const Registration: NextPage = () => {
   const [chooseShirt, setChooseShirt] = useState(false);
   const [sizeShirt, setSizeShirt] = useState("");
   const [existCPF, setExistCPF] = useState(false);
+  const [isValidCPF, setIsValidCPF] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const userCollectionRef = collection(firestore, "users");
@@ -104,8 +106,12 @@ const Registration: NextPage = () => {
     } else {
       setExistCPF(false);
     }
+    if (CPF == 0) {
+      setIsValidCPF(true);
+    } else {
+      setIsValidCPF(cpf.isValid(CPF));
+    }
   }, [CPF]);
-  console.log(CPF);
 
   return (
     <Container>
@@ -156,13 +162,13 @@ const Registration: NextPage = () => {
             required
             id="cpf"
             name="cpf"
-            type="text"
+            type="string"
             placeholder="Digite seu CPF"
             value={CPF}
             onChange={(e) => setCPF(e.target.value)}
           />
           {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
-
+          {isValidCPF ? "" : <Error>CPF inválido!</Error>}
           <label htmlFor="phone">Telefone:</label>
           <InputMask
             mask="(99)99999-9999"
