@@ -5,8 +5,8 @@ import Kit1 from "/public/image/kit1.png";
 import Kit2 from "/public/image/kit2.png";
 import largada from "/public/image/largada.png";
 import sponsor from "/public/image/sponsor.png";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { MdEmail } from "react-icons/md";
+import Whats from "/public/image/whats.svg";
+import Gmail from "/public/image/gmail.svg";
 import {
   Button,
   ButtonPay,
@@ -17,6 +17,7 @@ import {
   Day,
   Dom,
   Help,
+  Icon,
   Icons,
   ImageShirt,
   Info,
@@ -71,10 +72,14 @@ const Error404: NextPage = () => {
           </ButtonPay>
           <Icons>
             <a href="https://api.whatsapp.com/send?phone=5514981851114">
-              <IoLogoWhatsapp />
+              <Icon>
+                <Image src={Whats} alt="Whatsapp logo" layout="intrinsic" />
+              </Icon>
             </a>
             <a href="mailto:circuitosolidario@hotmail.com">
-              <MdEmail />
+              <Icon>
+                <Image src={Gmail} alt="Gmail logo" layout="intrinsic" />
+              </Icon>
             </a>
           </Icons>
         </Help>

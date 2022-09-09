@@ -17,6 +17,7 @@ import {
   Day,
   Dom,
   Help,
+  Icon,
   Icons,
   ImageShirt,
   Info,
@@ -32,6 +33,8 @@ import {
 } from "../styles/styles";
 import Link from "next/link";
 import Image from "next/image";
+import Whats from "/public/image/whats.svg";
+import Gmail from "/public/image/gmail.svg";
 
 const Home: NextPage = () => {
   return (
@@ -71,10 +74,14 @@ const Home: NextPage = () => {
           </ButtonPay>
           <Icons>
             <a href="https://api.whatsapp.com/send?phone=5514981851114">
-              <IoLogoWhatsapp />
+              <Icon>
+                <Image src={Whats} alt="Whatsapp logo" layout="intrinsic" />
+              </Icon>
             </a>
             <a href="mailto:circuitosolidario@hotmail.com">
-              <MdEmail />
+              <Icon>
+                <Image src={Gmail} alt="Gmail logo" layout="intrinsic" />
+              </Icon>
             </a>
           </Icons>
         </Help>

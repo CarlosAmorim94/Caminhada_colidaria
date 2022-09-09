@@ -2,6 +2,7 @@ import {
   Button,
   Container,
   Content,
+  Icon,
   Icons,
   Pix,
   Proof,
@@ -14,8 +15,8 @@ import {
 } from "./styles";
 import QR30 from "/public/image/30.png";
 import QR60 from "/public/image/60.png";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { MdEmail } from "react-icons/md";
+import Whats from "/public/image/whats.svg";
+import Gmail from "/public/image/gmail.svg";
 import Image from "next/image";
 import Head from "next/head";
 import type { NextPage } from "next";
@@ -82,10 +83,14 @@ const Payment: NextPage = () => {
           <p>Enviar comprovante:</p>
           <Icons>
             <a href="https://api.whatsapp.com/send?phone=5514981851114">
-              <IoLogoWhatsapp />
+              <Icon>
+                <Image src={Whats} alt="Whatsapp logo" layout="intrinsic" />
+              </Icon>
             </a>
             <a href="mailto:circuitosolidario@hotmail.com">
-              <MdEmail />
+              <Icon>
+                <Image src={Gmail} alt="Gmail logo" layout="intrinsic" />
+              </Icon>
             </a>
           </Icons>
         </Proof>

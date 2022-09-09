@@ -192,3 +192,7 @@ export const Icons = styled.div`
     }
   }
 `;
+
+export const Icon = styled.div`
+  width: 4rem;
+`;
