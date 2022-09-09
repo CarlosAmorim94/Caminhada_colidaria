@@ -30,6 +30,7 @@ export const Content = styled.article`
 
 export const Info = styled.div`
   width: 100%;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -42,7 +43,6 @@ export const Local = styled.div`
 
 export const Data = styled.div`
   width: 30%;
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,6 +103,10 @@ export const Button = styled.button`
     border: 2px solid black;
     background: rgba(255, 255, 255, 0.9);
   }
+
+  @media (min-width: 1024px) {
+    height: 5rem;
+  }
 `;
 
 export const Kits = styled.div`
@@ -125,6 +129,9 @@ export const Kits = styled.div`
   @media (min-width: 1024px) {
     height: 7rem;
   }
+  @media (min-width: 1500px) {
+    height: 10rem;
+  }
 `;
 
 export const KitTitle = styled.h3`
@@ -134,6 +141,9 @@ export const KitTitle = styled.h3`
 
 export const ImageShirt = styled.div`
   width: 40%;
+  @media (min-width: 1024px) {
+    width: 30%;
+  }
 `;
 
 export const Obs = styled.p`
