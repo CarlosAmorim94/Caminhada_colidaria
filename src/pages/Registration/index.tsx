@@ -13,8 +13,9 @@ import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
+import type { NextPage } from "next";
 
-export const Registration = () => {
+const Registration: NextPage = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");

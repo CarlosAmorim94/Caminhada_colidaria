@@ -17,9 +17,10 @@ import QR60 from "/public/image/60.png";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import Image from "next/image";
-import Head from 'next/head'
+import Head from "next/head";
+import type { NextPage } from "next";
 
-export function Payment() {
+const Payment: NextPage = () => {
   return (
     <Container>
       <Head>
@@ -91,6 +92,6 @@ export function Payment() {
       </Content>
     </Container>
   );
-}
+};
 
 export default Payment;

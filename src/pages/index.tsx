@@ -113,7 +113,7 @@ const Home: NextPage = () => {
         <Obs>Delicioso café da manhã após a prova.</Obs>
         <SubTitle>Patrocínio:</SubTitle>
         <Sponsorship>
-          <Image src={sponsor} />
+          <Image src={sponsor} alt="Patrocinadores" layout="responsive" />
         </Sponsorship>
       </Content>
     </Container>

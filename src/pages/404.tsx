@@ -33,7 +33,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-const Home: NextPage = () => {
+const Error404: NextPage = () => {
   return (
     <Container>
       <Head>
@@ -113,11 +113,11 @@ const Home: NextPage = () => {
         <Obs>Delicioso café da manhã após a prova.</Obs>
         <SubTitle>Patrocínio:</SubTitle>
         <Sponsorship>
-          <Image src={sponsor} />
+          <Image src={sponsor} alt="Patrocinadores" layout="responsive" />
         </Sponsorship>
       </Content>
     </Container>
   );
 };
 
-export default Home;
+export default Error404;
