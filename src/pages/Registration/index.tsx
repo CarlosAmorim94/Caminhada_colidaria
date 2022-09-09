@@ -111,7 +111,7 @@ export const Registration = () => {
         <input
           type="hidden"
           name="_next"
-          value="http://localhost:3000/Payment"
+          value="https://caminhadasolidaria.vercel.app/Payment"
         />
 
         <input type="hidden" name="_autoresponse" value={emailResponse} />
