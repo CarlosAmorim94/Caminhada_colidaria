@@ -106,7 +106,7 @@ const Registration: NextPage = () => {
     } else {
       setExistCPF(false);
     }
-    if (CPF == 0) {
+    if (CPF.length <= 0) {
       setIsValidCPF(true);
     } else {
       setIsValidCPF(cpf.isValid(CPF));
