@@ -18,7 +18,14 @@ export const TableHeadColumn = styled.th<{ width?: number }>`
   //Se eu tiver Props(width lá no componente), uso a prop, se não uso o auto
   width: ${(props) => (props.width ? `${props.width}px` : "auto")};
   padding: 10px 0;
-  text-align: left;
+  text-align: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const TableLine = styled.tr`
@@ -28,4 +35,5 @@ export const TableLine = styled.tr`
 export const TableColumn = styled.td`
   padding: 10px 0;
   color: black;
+  border-bottom: 1px dotted black;
 `;
