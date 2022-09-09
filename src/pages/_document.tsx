@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
             name="description"
             content="Primeira corrida e caminhada solidária em Botucatu para beneficiar 630 crianças carentes de 8 instituições"
           />
-          <link rel="icon" href="/public/assets/img/logo.png" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <body>
           <Main />

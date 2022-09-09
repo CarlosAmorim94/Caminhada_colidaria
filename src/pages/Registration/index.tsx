@@ -12,6 +12,7 @@ import {
 import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
+import Head from "next/head";
 
 export const Registration = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -104,6 +105,9 @@ export const Registration = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Registro</title>
+      </Head>
       <Content
         action="https://formsubmit.co/circuitosolidario@hotmail.com"
         method="POST"

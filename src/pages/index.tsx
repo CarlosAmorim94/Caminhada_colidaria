@@ -48,7 +48,7 @@ const Home: NextPage = () => {
           />
         </Logotype>
         <Title>Primeira corrida e caminhada solidária das crianças</Title>
-        <p>"Troque um brinquedo por um sorriso!"</p>
+        <p>Troque um brinquedo por um sorriso!</p>
 
         <Info>
           <Data>

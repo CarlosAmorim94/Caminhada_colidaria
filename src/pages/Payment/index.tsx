@@ -17,10 +17,14 @@ import QR60 from "/public/image/60.png";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import Image from "next/image";
+import Head from 'next/head'
 
 export function Payment() {
   return (
     <Container>
+      <Head>
+        <title>Pagamento</title>
+      </Head>
       <Content>
         <Title>Pagamento</Title>
         <Pix>
@@ -45,6 +49,7 @@ export function Payment() {
               <a
                 href="https://drive.google.com/file/d/1SpI3EpgFgl0j3sfWCSeahElRFwXTTg8t/view?usp=sharing"
                 target="_blank"
+                rel="noreferrer"
               >
                 Download PDF - R$ 30,00
               </a>
@@ -65,6 +70,7 @@ export function Payment() {
               <a
                 href="https://drive.google.com/file/d/15mLUM_cVsLt0tGp-RfgAawiWxRdnfJad/view?usp=sharing"
                 target="_blank"
+                rel="noreferrer"
               >
                 Download PDF - R$ 60,00
               </a>
