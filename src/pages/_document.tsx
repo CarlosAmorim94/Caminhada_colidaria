@@ -16,13 +16,8 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
             rel="stylesheet"
           />
-          <title>Caminhada/Corrida Solidária</title>
           <meta
             name="description"
-            content="Primeira corrida e caminhada solidária em Botucatu para beneficiar 630 crianças carentes de 8 instituições"
-          />
-          <meta
-            name="Caminhada/Corrida Solidária"
             content="Primeira corrida e caminhada solidária em Botucatu para beneficiar 630 crianças carentes de 8 instituições"
           />
           <link rel="icon" href="/public/assets/img/logo.png" />

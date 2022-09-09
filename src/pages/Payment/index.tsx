@@ -6,19 +6,19 @@ import {
   Pix,
   Proof,
   QRCode,
+  QRCodeImage,
   SubTitle,
   SubTitlePIX,
   Title,
   Value,
 } from "./styles";
-import QR30 from "../../assets/img/30.png";
-import QR60 from "../../assets/img/60.png";
-import D30 from "../../assets/pdf/30.pdf";
-import D60 from "../../assets/pdf/60.pdf";
+import QR30 from "/public/image/30.png";
+import QR60 from "/public/image/60.png";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
+import Image from "next/image";
 
-export const Payment = () => {
+export function Payment() {
   return (
     <Container>
       <Content>
@@ -32,18 +32,40 @@ export const Payment = () => {
         <QRCode>
           <div>
             <Value>R$ 30,00</Value>
-            <img src={QR30} />
+            <QRCodeImage>
+              <Image
+                src={QR30}
+                alt="QRCode para pagar 30 reais"
+                layout="fixed"
+                width={225}
+                height={225}
+              />
+            </QRCodeImage>
             <Button>
-              <a href={D30} target="_blank">
+              <a
+                href="https://drive.google.com/file/d/1SpI3EpgFgl0j3sfWCSeahElRFwXTTg8t/view?usp=sharing"
+                target="_blank"
+              >
                 Download PDF - R$ 30,00
               </a>
             </Button>
           </div>
           <div>
             <Value>R$ 60,00</Value>
-            <img src={QR60} />
+            <QRCodeImage>
+              <Image
+                src={QR60}
+                alt="QRCode para pagar 60 reais"
+                layout="fixed"
+                width={225}
+                height={225}
+              />
+            </QRCodeImage>
             <Button>
-              <a href={D60} target="_blank">
+              <a
+                href="https://drive.google.com/file/d/15mLUM_cVsLt0tGp-RfgAawiWxRdnfJad/view?usp=sharing"
+                target="_blank"
+              >
                 Download PDF - R$ 60,00
               </a>
             </Button>
@@ -63,4 +85,6 @@ export const Payment = () => {
       </Content>
     </Container>
   );
-};
+}
+
+export default Payment;

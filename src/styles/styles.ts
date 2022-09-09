@@ -29,17 +29,15 @@ export const Content = styled.article`
 `;
 
 export const Info = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 `;
 
-export const Local = styled.img`
+export const Local = styled.div`
   width: 70%;
-  @media (min-width: 1024px) {
-    width: 50%;
-  }
 `;
 
 export const Data = styled.div`
@@ -68,7 +66,7 @@ export const City = styled(Day)`
   font-size: 1rem;
 `;
 
-export const Logotype = styled.img`
+export const Logotype = styled.div`
   width: 100%;
 `;
 
@@ -109,7 +107,7 @@ export const Button = styled.button`
 
 export const Kits = styled.div`
   width: 100%;
-  height: 5rem;
+
   margin-bottom: 5px;
   display: flex;
   flex-direction: row;
@@ -134,9 +132,8 @@ export const KitTitle = styled.h3`
   margin-left: 1rem;
 `;
 
-export const ImageShirt = styled.img`
+export const ImageShirt = styled.div`
   width: 40%;
-  height: 100%;
 `;
 
 export const Obs = styled.p`
@@ -146,7 +143,7 @@ export const Obs = styled.p`
   margin-top: 1rem;
 `;
 
-export const Sponsorship = styled.img`
+export const Sponsorship = styled.div`
   width: 100%;
 `;
 

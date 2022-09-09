@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -111,7 +111,7 @@ export const Registration = () => {
         <input
           type="hidden"
           name="_next"
-          value="https://caminhadasolidaria.vercel.app/pagamento"
+          value="https://caminhadasolidaria.vercel.app/Payment"
         />
 
         <input type="hidden" name="_autoresponse" value={emailResponse} />
@@ -284,3 +284,5 @@ export const Registration = () => {
     </Container>
   );
 };
+
+export default Registration;

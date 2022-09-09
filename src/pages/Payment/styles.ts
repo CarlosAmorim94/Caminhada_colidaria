@@ -81,6 +81,8 @@ export const QRCode = styled.div`
   }
 `;
 
+export const QRCodeImage = styled.div``;
+
 export const Button = styled.button`
   width: 70%;
   padding: 0.5rem;
