@@ -65,13 +65,15 @@ const Home: NextPage = () => {
           </Local>
         </Info>
 
-        <Button>
-          <Link href="/Registration">Participar!</Link>
-        </Button>
+        <Link href="/Registration">
+          <Button>Participar!</Button>
+        </Link>
+
         <Help>
-          <ButtonPay>
-            <Link href="/Payment">QR Code/Pix</Link>
-          </ButtonPay>
+          <Link href="/Payment">
+            <ButtonPay>QR Code/Pix</ButtonPay>
+          </Link>
+
           <Icons>
             <a href="https://api.whatsapp.com/send?phone=5514981851114">
               <Icon>

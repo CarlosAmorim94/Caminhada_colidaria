@@ -98,11 +98,7 @@ export const Button = styled.button`
   border-radius: 1rem;
   background: rgba(255, 255, 1, 1);
   color: black;
-
-  &:hover {
-    border: 2px solid black;
-    background: rgba(255, 255, 255, 0.9);
-  }
+  cursor: pointer;
 
   @media (min-width: 1024px) {
     height: 5rem;

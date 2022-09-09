@@ -123,11 +123,7 @@ export const Button = styled.button`
   border: 2px solid white;
   border-radius: 1rem;
   background: rgba(255, 255, 1, 1);
-
-  &:hover {
-    border: 2px solid black;
-    background: rgba(255, 255, 255, 0.9);
-  }
+  cursor: pointer;
 `;
 
 export const Legend = styled.legend`
@@ -147,4 +143,45 @@ export const Error = styled.span`
   padding: 0.5rem;
   text-shadow: none;
   border-radius: 1rem;
+`;
+
+export const LoadingForm = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 1rem;
+  color: #000;
+  background: rgba(255, 255, 1, 1);
+  cursor: pointer;
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 6px solid #000;
+    border-color: #000 transparent #000 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;

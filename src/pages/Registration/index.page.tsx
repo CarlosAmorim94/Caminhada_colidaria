@@ -8,6 +8,7 @@ import {
   FieldSetKit,
   Legend,
   Error,
+  LoadingForm,
 } from "./styles";
 import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
@@ -27,6 +28,7 @@ const Registration: NextPage = () => {
   const [chooseShirt, setChooseShirt] = useState(false);
   const [sizeShirt, setSizeShirt] = useState("");
   const [existCPF, setExistCPF] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const userCollectionRef = collection(firestore, "users");
 
@@ -53,6 +55,7 @@ const Registration: NextPage = () => {
     camiseta: sizeShirt,
   };
   const handleForm = async () => {
+    setLoading(true);
     const user = await addDoc(userCollectionRef, cadastro);
   };
 
@@ -270,22 +273,22 @@ const Registration: NextPage = () => {
           </FieldSet>
         )}
 
-        {existCPF ? "" : <Button onClick={handleForm}>Cadastrar</Button>}
+        {existCPF ? (
+          ""
+        ) : (
+          <Button hidden={loading} onClick={handleForm}>
+            Cadastrar
+          </Button>
+        )}
+        {loading ? (
+          <LoadingForm>
+            Aguarde...
+            <div className="lds-dual-ring"></div>
+          </LoadingForm>
+        ) : (
+          ""
+        )}
       </Content>
-
-      {/* <ul>
-        {users.map((user: any) => (
-          <li key={user.cpf}>
-            <div>{user.nome}</div>
-            <div>{user.kit}</div>
-            <div>{user.camiseta}</div>
-            <div>{user.cpf}</div>
-            <div>{user.numero}</div>
-            <div>{user.equipe}</div>
-            <div>{user.email}</div>
-          </li>
-        ))}
-      </ul> */}
     </Container>
   );
 };
