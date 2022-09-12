@@ -44,7 +44,10 @@ const Registration: NextPage = () => {
   };
   const handleForm = async () => {
     setLoading(true);
-    const user = await addDoc(userCollectionRef, cadastro);
+    if (CPF != "") {
+      await addDoc(userCollectionRef, cadastro);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -97,6 +100,13 @@ const Registration: NextPage = () => {
       setIsValidCPF(cpf.isValid(CPF));
     }
   }, [CPF]);
+
+  useEffect(() => {
+    if (email === "") {
+      setLoading(true);
+    }
+    setLoading(false);
+  }, [loading]);
 
   return (
     <Container>
