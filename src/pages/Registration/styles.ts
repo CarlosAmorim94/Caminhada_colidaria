@@ -52,64 +52,15 @@ export const FieldSetInformation = styled.fieldset`
   }
 `;
 
-export const FieldSetKit = styled.fieldset`
-  width: 100%;
+export const Select = styled.select`
+  border-radius: 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
   border: none;
-  display: flex;
-  flex-direction: row;
-  margin-top: 1rem;
 
-  input[type="radio"] {
-    display: none;
-  }
-
-  label {
-    padding: 0.5rem;
-    width: 50%;
-    font-size: 1rem;
-    text-align: center;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 0 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  input[type="radio"]:checked + label {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid white;
-    color: white;
-    text-shadow: none;
-  }
-`;
-
-export const FieldSet = styled.fieldset`
-  width: 100%;
-  border: none;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(3, auto);
-
-  margin-top: 1rem;
-  input[type="radio"] {
-    display: none;
-  }
-
-  label {
-    padding: 0.5rem;
-    font-size: 1rem;
-    text-align: center;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  input[type="radio"]:checked + label {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid white;
-    color: white;
-    text-shadow: none;
+  &:focus {
+    outline: 0 none;
+    box-shadow: 0 0 0 transparent;
   }
 `;
 

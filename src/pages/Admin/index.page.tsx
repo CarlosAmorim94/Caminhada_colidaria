@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../Firebase/firebase";
 import {
   Container,
@@ -95,25 +95,16 @@ const Admin: React.FC = () => {
             <TableHeadColumn>
               <div>
                 KIT
-                <select onChange={handleKit}>
-                  <option>{""}</option>
-                  <option>Kit1</option>
-                  <option>Kit2</option>
-                </select>
-              </div>
-            </TableHeadColumn>
-            <TableHeadColumn>
-              <div>
-                CAMISETA
                 <select onChange={handleFilter}>
                   <option>{""}</option>
-                  <option>BL-M</option>
-                  <option>PP</option>
-                  <option>P</option>
-                  <option>M</option>
-                  <option>G</option>
-                  <option>GG</option>
-                  <option>XG</option>
+                  <option>kit 1</option>
+                  <option>kit 2 - BL-M</option>
+                  <option>kit 2 - PP</option>
+                  <option>kit 2 - P</option>
+                  <option>kit 2 - M</option>
+                  <option>kit 2 - G</option>
+                  <option>kit 2 - GG</option>
+                  <option>kit 2 - XG</option>
                 </select>
               </div>
             </TableHeadColumn>

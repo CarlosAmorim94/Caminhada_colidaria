@@ -5,8 +5,7 @@ import Kit1 from "/public/image/kit1.png";
 import Kit2 from "/public/image/kit2.png";
 import largada from "/public/image/largada.png";
 import sponsor from "/public/image/sponsor.png";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { MdEmail } from "react-icons/md";
+
 import {
   Button,
   ButtonPay,

@@ -3,12 +3,11 @@ import {
   Button,
   Container,
   Content,
-  FieldSet,
   FieldSetInformation,
-  FieldSetKit,
   Legend,
   Error,
   LoadingForm,
+  Select,
 } from "./styles";
 import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
@@ -26,25 +25,13 @@ const Registration: NextPage = () => {
   const [phone, setPhone] = useState("");
   const [team, setTeam] = useState("");
   const [kit, setKit] = useState("");
-  const [chooseShirt, setChooseShirt] = useState(false);
-  const [sizeShirt, setSizeShirt] = useState("");
   const [existCPF, setExistCPF] = useState(false);
   const [isValidCPF, setIsValidCPF] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const userCollectionRef = collection(firestore, "users");
 
-  const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: CPF: ${CPF} , Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit} Tamanho da camiseta: ${sizeShirt}`;
-
-  const handleKit1 = (e: any) => {
-    setKit(e.target.value);
-    setChooseShirt(false);
-  };
-
-  const handleKit2 = (e: any) => {
-    setKit(e.target.value);
-    setChooseShirt(true);
-  };
+  const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: CPF: ${CPF} , Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit}`;
 
   const cadastro = {
     numero: id,
@@ -54,7 +41,6 @@ const Registration: NextPage = () => {
     telefone: phone,
     equipe: team,
     kit: kit,
-    camiseta: sizeShirt,
   };
   const handleForm = async () => {
     setLoading(true);
@@ -101,7 +87,6 @@ const Registration: NextPage = () => {
 
     const duplicateCPF = cpfList.includes(CPF);
     if (duplicateCPF) {
-      console.log(duplicateCPF);
       setExistCPF(true);
     } else {
       setExistCPF(false);
@@ -169,6 +154,7 @@ const Registration: NextPage = () => {
           />
           {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
           {isValidCPF ? "" : <Error>CPF inválido!</Error>}
+
           <label htmlFor="phone">Telefone:</label>
           <InputMask
             mask="(99)99999-9999"
@@ -189,95 +175,25 @@ const Registration: NextPage = () => {
             value={team}
             onChange={(e) => setTeam(e.target.value)}
           />
+
+          <label htmlFor="kit">Escolha seu kit:</label>
+          <Select
+            required
+            id="kit"
+            name="kit"
+            onChange={(e) => setKit(e.target.value)}
+          >
+            <option></option>
+            <option>kit 1</option>
+            <option>kit 2 - BL-M</option>
+            <option>kit 2 - PP</option>
+            <option>kit 2 - P</option>
+            <option>kit 2 - M</option>
+            <option>kit 2 - G</option>
+            <option>kit 2 - GG</option>
+            <option>kit 2 - XG</option>
+          </Select>
         </FieldSetInformation>
-
-        <FieldSetKit>
-          <Legend>Escolha seu kit:</Legend>
-
-          <input
-            type="radio"
-            id="kit1"
-            name="kits"
-            value="kit1"
-            onClick={handleKit1}
-          />
-          <label htmlFor="kit1">Kit 1 - Numeral e medalha - R$30,00</label>
-
-          <input
-            type="radio"
-            id="kit2"
-            name="kits"
-            value="kit2"
-            onClick={handleKit2}
-          />
-          <label htmlFor="kit2">
-            Kit 2 - Numeral, medalha + CAMISETA - R$60,00
-          </label>
-        </FieldSetKit>
-
-        {!chooseShirt ? (
-          ""
-        ) : (
-          <FieldSet>
-            <Legend>Escolha o tamanho da sua camiseta:</Legend>
-            <input
-              type="radio"
-              id="BL-M"
-              name="sizeShirt"
-              value="BL-M"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="BL-M">BL-M</label>
-            <input
-              type="radio"
-              id="PP"
-              name="sizeShirt"
-              value="PP"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="PP">PP</label>
-            <input
-              type="radio"
-              id="P"
-              name="sizeShirt"
-              value="P"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="P">P</label>
-            <input
-              type="radio"
-              id="M"
-              name="sizeShirt"
-              value="M"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="M">M</label>
-            <input
-              type="radio"
-              id="G"
-              name="sizeShirt"
-              value="G"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="G">G</label>
-            <input
-              type="radio"
-              id="GG"
-              name="sizeShirt"
-              value="GG"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="GG">GG</label>
-            <input
-              type="radio"
-              id="XG"
-              name="sizeShirt"
-              value="XG"
-              onChange={(e) => setSizeShirt(e.target.value)}
-            />
-            <label htmlFor="XG">XG</label>
-          </FieldSet>
-        )}
 
         {existCPF ? (
           ""
