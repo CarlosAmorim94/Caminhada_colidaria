@@ -44,7 +44,14 @@ const Registration: NextPage = () => {
   };
   const handleForm = async () => {
     setLoading(true);
-    if (CPF != "") {
+    if (
+      CPF != "" &&
+      email != "" &&
+      name != "" &&
+      phone != "" &&
+      team != "" &&
+      kit != ""
+    ) {
       await addDoc(userCollectionRef, cadastro);
     }
     setLoading(false);
@@ -102,7 +109,14 @@ const Registration: NextPage = () => {
   }, [CPF]);
 
   useEffect(() => {
-    if (email === "") {
+    if (
+      CPF != "" &&
+      email != "" &&
+      name != "" &&
+      phone != "" &&
+      team != "" &&
+      kit != ""
+    ) {
       setLoading(true);
     }
     setLoading(false);
