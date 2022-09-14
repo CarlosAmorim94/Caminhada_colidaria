@@ -149,7 +149,7 @@ export const Obs = styled.p`
   margin-top: 1rem;
 `;
 
-export const Sponsorship = styled.div`
+export const Sponsorship = styled.ul`
   width: 100%;
 `;
 

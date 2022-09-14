@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import Head from "next/head";
 import Logo from "/public/image/logo.png";
 import Kit1 from "/public/image/kit1.png";
 import Kit2 from "/public/image/kit2.png";
 import largada from "/public/image/largada.png";
-import sponsor from "/public/image/sponsor.png";
+import { sponsorList } from "../components/Sponsors/list";
 
 import {
   Button,
@@ -30,10 +32,9 @@ import {
   SubTitle,
   Title,
 } from "../styles/styles";
-import Link from "next/link";
-import Image from "next/image";
 import Whats from "/public/image/whats.svg";
 import Gmail from "/public/image/gmail.svg";
+import Sponsors from "../components/Sponsors";
 
 const Home: NextPage = () => {
   return (
@@ -121,7 +122,9 @@ const Home: NextPage = () => {
         <Obs>Delicioso café da manhã após a prova.</Obs>
         <SubTitle>Patrocínio:</SubTitle>
         <Sponsorship>
-          <Image src={sponsor} alt="Patrocinadores" layout="responsive" />
+          {sponsorList.map((sponsor, index) => (
+            <Sponsors item={sponsor} key={index} />
+          ))}
         </Sponsorship>
       </Content>
     </Container>

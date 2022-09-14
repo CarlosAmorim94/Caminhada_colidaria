@@ -128,8 +128,8 @@ const Registration: NextPage = () => {
         <title>Registro</title>
       </Head>
       <Content
-        action="https://formsubmit.co/circuitosolidario@hotmail.com"
-        method="POST"
+      // action="https://formsubmit.co/circuitosolidario@hotmail.com"
+      // method="POST"
       >
         <input
           type="hidden"
