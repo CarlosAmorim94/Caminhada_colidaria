@@ -142,7 +142,16 @@ export const ImageShirt = styled.div`
   }
 `;
 
-export const Obs = styled.p`
+export const Obs = styled.div`
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ObsText = styled.p`
   width: 100%;
   font-size: 0.8rem;
   text-align: start;

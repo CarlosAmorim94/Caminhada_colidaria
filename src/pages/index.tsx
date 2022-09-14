@@ -27,6 +27,7 @@ import {
   Local,
   Logotype,
   Obs,
+  ObsText,
   Out,
   Sponsorship,
   SubTitle,
@@ -115,11 +116,13 @@ const Home: NextPage = () => {
             />
           </ImageShirt>
         </Kits>
-        <Obs>Obs:</Obs>
         <Obs>
-          As 50 primeiras pessoas ganharão a personalização atrás da camiseta.
+          Obs:
+          <ObsText>
+            As 50 primeiras pessoas ganharão a personalização atrás da camiseta.
+          </ObsText>
+          <ObsText>Delicioso café da manhã após a prova.</ObsText>
         </Obs>
-        <Obs>Delicioso café da manhã após a prova.</Obs>
         <SubTitle>Patrocínio:</SubTitle>
         <Sponsorship>
           {sponsorList.map((sponsor, index) => (
