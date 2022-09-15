@@ -27,13 +27,3 @@ export const TableHeadColumn = styled.th<{ width?: number }>`
     align-items: center;
   }
 `;
-
-export const TableLine = styled.tr`
-  color: black;
-`;
-
-export const TableColumn = styled.td`
-  padding: 10px 0;
-  color: black;
-  border-bottom: 1px dotted black;
-`;

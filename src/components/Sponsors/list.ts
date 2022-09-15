@@ -2,7 +2,7 @@ import { Sponsor } from "../../types/sponsor";
 
 export const sponsorList: Sponsor[] = [
   {
-    name: "Carlos Amorim Desenvolvedor",
+    name: "Carlos Amorim Web Developer",
     img: "carlos.png",
     site: "https://carlosamorim.vercel.app/",
   },

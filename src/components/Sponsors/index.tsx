@@ -8,7 +8,6 @@ interface SponsorProps {
 }
 
 const Sponsors = ({ item }: SponsorProps) => {
-  console.log(item.img);
   return (
     <Link href={item.site}>
       <Container>

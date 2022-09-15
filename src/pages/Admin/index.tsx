@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../Firebase/firebase";
-import {
-  Container,
-  Table,
-  TableColumn,
-  TableHeadColumn,
-  TableLine,
-} from "./styles";
+import { Container, Table, TableHeadColumn } from "./styles";
+import TableLine from "../../components/TableLine";
 
 const Admin: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -72,7 +67,7 @@ const Admin: React.FC = () => {
     for (let i = 0; i < users.length; ++i) {
       const newValue = value.toLowerCase(); // nao redeclarar o value.
 
-      const user = users[i].camiseta.toLowerCase();
+      const user = users[i].kit.toLowerCase();
 
       if (user.includes(newValue)) {
         filteredUsers.push(users[i]);
@@ -111,17 +106,8 @@ const Admin: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
-            <TableLine key={index}>
-              <TableColumn>{user.cpf}</TableColumn>
-              <TableColumn>{user.nome}</TableColumn>
-              <TableColumn>{user.numero}</TableColumn>
-              <TableColumn>{user.telefone}</TableColumn>
-              <TableColumn>{user.email}</TableColumn>
-              <TableColumn>{user.equipe}</TableColumn>
-              <TableColumn>{user.kit}</TableColumn>
-              <TableColumn>{user.camiseta}</TableColumn>
-            </TableLine>
+          {users.map((user) => (
+            <TableLine user={user} key={user.cpf} />
           ))}
         </tbody>
       </Table>
