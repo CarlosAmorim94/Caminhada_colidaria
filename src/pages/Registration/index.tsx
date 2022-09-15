@@ -13,12 +13,10 @@ import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
-import type { NextPage } from "next";
 import { cpf } from "cpf-cnpj-validator";
-import { User } from "../../types/users";
 
-const Registration: NextPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
+const Registration = () => {
+  const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");

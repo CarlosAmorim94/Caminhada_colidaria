@@ -3,12 +3,10 @@ import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../Firebase/firebase";
 import { Container, Table, TableHeadColumn } from "./styles";
 import TableLine from "../../components/TableLine";
-import { User } from "../../types/users";
 
-const Admin: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [originalUsers, setOriginalUsers] = useState<User[]>([]);
-  const [size, setSize] = useState("");
+const Admin = () => {
+  const [users, setUsers] = useState<any[]>([]);
+  const [originalUsers, setOriginalUsers] = useState<any[]>([]);
   const [kit, setKit] = useState("");
 
   const userCollectionRef = collection(firestore, "users");
@@ -21,13 +19,6 @@ const Admin: React.FC = () => {
     };
     getUsers();
   }, []);
-
-  function handleKit(e: React.ChangeEvent<HTMLSelectElement>) {
-    setKit(e.target.value);
-  }
-  useEffect(() => {
-    setUsers(searchKit(kit));
-  }, [kit]);
 
   function searchKit(value: string) {
     const filteredUsers = [];
@@ -50,32 +41,12 @@ const Admin: React.FC = () => {
   }
 
   function handleFilter(e: React.ChangeEvent<HTMLSelectElement>) {
-    setSize(e.target.value);
+    setKit(e.target.value);
   }
 
   useEffect(() => {
-    setUsers(searchSize(size));
-  }, [size]);
-
-  function searchSize(value: string) {
-    const filteredUsers = [];
-
-    if (value.length === 0) {
-      return originalUsers; // ESTE RETORNO IRA RESTAURAR OS DADOS ORIGINAIS DO
-      // USER
-    }
-
-    for (let i = 0; i < users.length; ++i) {
-      const newValue = value.toLowerCase(); // nao redeclarar o value.
-
-      const user = users[i].kit.toLowerCase();
-
-      if (user.includes(newValue)) {
-        filteredUsers.push(users[i]);
-      }
-    }
-    return filteredUsers;
-  }
+    setUsers(searchKit(kit));
+  }, [kit]);
 
   return (
     <Container>

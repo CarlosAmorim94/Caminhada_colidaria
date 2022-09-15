@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: all ease .5s;
     text-decoration: none;
     letter-spacing: 1px;
+    -webkit-font-smoothing: antialiased;
   }
   
   html {

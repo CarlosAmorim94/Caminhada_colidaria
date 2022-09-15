@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
@@ -37,7 +36,7 @@ import Whats from "/public/image/whats.svg";
 import Gmail from "/public/image/gmail.svg";
 import Sponsors from "../components/Sponsors";
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <Container>
       <Head>

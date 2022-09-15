@@ -1,12 +1,12 @@
-import type { NextPage } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import Head from "next/head";
 import Logo from "/public/image/logo.png";
 import Kit1 from "/public/image/kit1.png";
 import Kit2 from "/public/image/kit2.png";
 import largada from "/public/image/largada.png";
-import sponsor from "/public/image/sponsor.png";
-import Whats from "/public/image/whats.svg";
-import Gmail from "/public/image/gmail.svg";
+import { sponsorList } from "../components/Sponsors/list";
+
 import {
   Button,
   ButtonPay,
@@ -26,15 +26,17 @@ import {
   Local,
   Logotype,
   Obs,
+  ObsText,
   Out,
   Sponsorship,
   SubTitle,
   Title,
 } from "../styles/styles";
-import Link from "next/link";
-import Image from "next/image";
+import Whats from "/public/image/whats.svg";
+import Gmail from "/public/image/gmail.svg";
+import Sponsors from "../components/Sponsors";
 
-const Error404: NextPage = () => {
+const Home = () => {
   return (
     <Container>
       <Head>
@@ -63,13 +65,15 @@ const Error404: NextPage = () => {
           </Local>
         </Info>
 
-        <Button>
-          <Link href="/Registration">Participar!</Link>
-        </Button>
+        <Link href="/Registration">
+          <Button>Participar!</Button>
+        </Link>
+
         <Help>
-          <ButtonPay>
-            <Link href="/Payment">QR Code/Pix</Link>
-          </ButtonPay>
+          <Link href="/Payment">
+            <ButtonPay>QR Code/Pix</ButtonPay>
+          </Link>
+
           <Icons>
             <a href="https://api.whatsapp.com/send?phone=5514981851114">
               <Icon>
@@ -111,18 +115,22 @@ const Error404: NextPage = () => {
             />
           </ImageShirt>
         </Kits>
-        <Obs>Obs:</Obs>
         <Obs>
-          As 50 primeiras pessoas ganharão a personalização atrás da camiseta.
+          Obs:
+          <ObsText>
+            As 50 primeiras pessoas ganharão a personalização atrás da camiseta.
+          </ObsText>
+          <ObsText>Delicioso café da manhã após a prova.</ObsText>
         </Obs>
-        <Obs>Delicioso café da manhã após a prova.</Obs>
         <SubTitle>Patrocínio:</SubTitle>
         <Sponsorship>
-          <Image src={sponsor} alt="Patrocinadores" layout="responsive" />
+          {sponsorList.map((sponsor, index) => (
+            <Sponsors item={sponsor} key={index} />
+          ))}
         </Sponsorship>
       </Content>
     </Container>
   );
 };
 
-export default Error404;
+export default Home;

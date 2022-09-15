@@ -19,9 +19,8 @@ import Whats from "/public/image/whats.svg";
 import Gmail from "/public/image/gmail.svg";
 import Image from "next/image";
 import Head from "next/head";
-import type { NextPage } from "next";
 
-const Payment: NextPage = () => {
+const Payment = () => {
   return (
     <Container>
       <Head>
