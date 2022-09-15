@@ -20,7 +20,7 @@ import Gmail from "/public/image/gmail.svg";
 import Image from "next/image";
 import Head from "next/head";
 
-export const Payment = () => {
+export default function Payment() {
   return (
     <Container>
       <Head>
@@ -96,6 +96,4 @@ export const Payment = () => {
       </Content>
     </Container>
   );
-};
-
-export default Payment;
+}

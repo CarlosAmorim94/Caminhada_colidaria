@@ -4,7 +4,7 @@ import { firestore } from "../../Firebase/firebase";
 import { Container, Table, TableHeadColumn } from "./styles";
 import TableLine from "../../components/TableLine";
 
-export const Admin = () => {
+export default function Admin() {
   const [users, setUsers] = useState<any[]>([]);
   const [originalUsers, setOriginalUsers] = useState<any[]>([]);
   const [kit, setKit] = useState("");
@@ -85,6 +85,4 @@ export const Admin = () => {
       </Table>
     </Container>
   );
-};
-
-export default Admin;
+}

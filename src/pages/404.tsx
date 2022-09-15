@@ -36,7 +36,7 @@ import Whats from "/public/image/whats.svg";
 import Gmail from "/public/image/gmail.svg";
 import Sponsors from "../components/Sponsors";
 
-export const NotFound = () => {
+export default function NotFound() {
   return (
     <Container>
       <Head>
@@ -131,6 +131,4 @@ export const NotFound = () => {
       </Content>
     </Container>
   );
-};
-
-export default NotFound;
+}

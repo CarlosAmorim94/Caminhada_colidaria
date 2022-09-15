@@ -7,7 +7,7 @@ interface SponsorProps {
   item: Sponsor;
 }
 
-export const Sponsors = ({ item }: SponsorProps) => {
+export default function Sponsors({ item }: SponsorProps) {
   return (
     <Link href={item.site}>
       <Container>
@@ -24,6 +24,4 @@ export const Sponsors = ({ item }: SponsorProps) => {
       </Container>
     </Link>
   );
-};
-
-export default Sponsors;
+}

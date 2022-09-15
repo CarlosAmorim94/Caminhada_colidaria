@@ -7,7 +7,7 @@ interface Props {
   user: User;
 }
 
-export const TableLine = ({ user }: Props) => {
+export default function TableLine({ user }: Props) {
   return (
     <Container>
       <TableColumn>{user.cpf}</TableColumn>
@@ -19,6 +19,4 @@ export const TableLine = ({ user }: Props) => {
       <TableColumn>{user.kit}</TableColumn>
     </Container>
   );
-};
-
-export default TableLine;
+}
