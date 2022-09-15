@@ -7,7 +7,7 @@ interface Props {
   user: User;
 }
 
-const TableLine = ({ user }: Props) => {
+export const TableLine = ({ user }: Props) => {
   return (
     <Container>
       <TableColumn>{user.cpf}</TableColumn>

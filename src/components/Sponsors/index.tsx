@@ -7,7 +7,7 @@ interface SponsorProps {
   item: Sponsor;
 }
 
-const Sponsors = ({ item }: SponsorProps) => {
+export const Sponsors = ({ item }: SponsorProps) => {
   return (
     <Link href={item.site}>
       <Container>

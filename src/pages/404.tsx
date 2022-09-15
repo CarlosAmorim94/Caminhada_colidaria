@@ -36,7 +36,7 @@ import Whats from "/public/image/whats.svg";
 import Gmail from "/public/image/gmail.svg";
 import Sponsors from "../components/Sponsors";
 
-const Home = () => {
+export const NotFound = () => {
   return (
     <Container>
       <Head>
@@ -133,4 +133,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default NotFound;

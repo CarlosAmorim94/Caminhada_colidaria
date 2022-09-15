@@ -4,7 +4,7 @@ import { firestore } from "../../Firebase/firebase";
 import { Container, Table, TableHeadColumn } from "./styles";
 import TableLine from "../../components/TableLine";
 
-const Admin = () => {
+export const Admin = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [originalUsers, setOriginalUsers] = useState<any[]>([]);
   const [kit, setKit] = useState("");

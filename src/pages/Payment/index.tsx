@@ -20,7 +20,7 @@ import Gmail from "/public/image/gmail.svg";
 import Image from "next/image";
 import Head from "next/head";
 
-const Payment = () => {
+export const Payment = () => {
   return (
     <Container>
       <Head>

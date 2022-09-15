@@ -15,7 +15,7 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import { cpf } from "cpf-cnpj-validator";
 
-const Registration = () => {
+export const Registration = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
