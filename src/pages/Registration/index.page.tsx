@@ -13,49 +13,19 @@ import InputMask from "react-input-mask";
 import { firestore } from "../../Firebase/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
-import { cpf } from "cpf-cnpj-validator";
+import { useForm } from "react-hook-form";
+import { FormData } from "../../types/formData";
 
 export default function Registration() {
   const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
-  const [email, setEmail] = useState("");
-  const [CPF, setCPF] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [team, setTeam] = useState("");
-  const [kit, setKit] = useState("");
   const [existCPF, setExistCPF] = useState(false);
   const [isValidCPF, setIsValidCPF] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const userCollectionRef = collection(firestore, "users");
 
-  const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: CPF: ${CPF} , Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit}`;
-
-  const cadastro = {
-    numero: id,
-    cpf: CPF,
-    email: email,
-    nome: name,
-    telefone: phone,
-    equipe: team,
-    kit: kit,
-  };
-
-  const handleForm = async () => {
-    setLoading(true);
-    if (
-      CPF != "" &&
-      email != "" &&
-      name != "" &&
-      phone != "" &&
-      team != "" &&
-      kit != ""
-    ) {
-      await addDoc(userCollectionRef, cadastro);
-    }
-    setLoading(false);
-  };
+  /*  const emailResponse = `Olá ${data.name}, sua inscrição foi efetuada com sucesso! seu ID: ${data.id} confira os dados: CPF: ${data.CPF} , Telefone: ${data.phone}, Equipe: ${data.team}, Kit escolhido: ${data.kit}`; */
 
   useEffect(() => {
     const getUsers = async () => {
@@ -89,7 +59,9 @@ export default function Registration() {
     fetchData();
   }, []);
 
-  useEffect(() => {
+  console.log("numero:", id);
+
+  /*   useEffect(() => {
     let cpfList: string[] = [];
     users.map((user) => {
       cpfList.push(user.cpf);
@@ -106,9 +78,9 @@ export default function Registration() {
     } else {
       setIsValidCPF(cpf.isValid(CPF));
     }
-  }, [CPF]);
+  }, [CPF]); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (
       CPF != "" &&
       email != "" &&
@@ -121,7 +93,26 @@ export default function Registration() {
     } else {
       setLoading(false);
     }
-  }, [loading]);
+  }, [loading]); */
+
+  const handleForm = (data: FormData) => {
+    data.id = id;
+    console.log(data);
+    /* setLoading(true);
+    if (
+      CPF != "" &&
+      email != "" &&
+      name != "" &&
+      phone != "" &&
+      team != "" &&
+      kit != ""
+    ) {
+      await addDoc(userCollectionRef, cadastro);
+    }
+    setLoading(false); */
+  };
+
+  const { register, handleSubmit } = useForm();
 
   return (
     <Container>
@@ -129,85 +120,66 @@ export default function Registration() {
         <title>Registro</title>
       </Head>
       <Content
-        action="https://formsubmit.co/circuitosolidario@hotmail.com"
-        method="POST"
+        onSubmit={handleSubmit(handleForm)}
+        // action="https://formsubmit.co/circuitosolidario@hotmail.com"
+        // method="POST"
       >
-        <input
+        {/* <input
           type="hidden"
           name="_next"
           value="https://caminhadasolidaria.vercel.app/Payment"
         />
 
-        <input type="hidden" name="_autoresponse" value={emailResponse} />
+        <input type="hidden" name="_autoresponse" value={emailResponse} /> */}
         <FieldSetInformation>
           <Legend>Dados para cadastro:</Legend>
 
           <label htmlFor="id">Numeração: {id}</label>
-          <input id="id" value={id} type="hidden" name="id" />
+          <input id="id" value={id} type="hidden" {...register("id")} />
 
           <label htmlFor="email">E-mail:</label>
           <input
-            required
             id="email"
-            name="email"
             type="email"
             placeholder="Digite seu E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email")}
           />
           <label htmlFor="name">Nome:</label>
           <input
-            required
             id="name"
-            name="name"
             type="text"
             placeholder="Digite seu Nome"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            {...register("name")}
           />
 
           <label htmlFor="cpf">CPF:</label>
           <InputMask
             mask="99999999999"
-            required
             id="cpf"
-            name="cpf"
-            type="string"
+            type="text"
             placeholder="Digite seu CPF"
-            value={CPF}
-            onChange={(e) => setCPF(e.target.value)}
+            {...register("cpf")}
           />
-          {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
-          {isValidCPF ? "" : <Error>CPF inválido!</Error>}
+          {/*   {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
+          {isValidCPF ? "" : <Error>CPF inválido!</Error>} */}
 
           <label htmlFor="phone">Telefone:</label>
           <InputMask
             mask="(99)99999-9999"
-            required
             id="phone"
-            name="phone"
             placeholder="Digite seu telefone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            {...register("phone")}
           />
           <label htmlFor="team">Equipe:</label>
           <input
-            required
             id="team"
-            name="team"
             type="text"
             placeholder="Digite o nome da sua Equipe"
-            value={team}
-            onChange={(e) => setTeam(e.target.value)}
+            {...register("team")}
           />
 
           <label htmlFor="kit">Escolha seu kit:</label>
-          <Select
-            required
-            id="kit"
-            name="kit"
-            onChange={(e) => setKit(e.target.value)}
-          >
+          <Select id="kit" {...register("kit")}>
             <option></option>
             <option>kit 1</option>
             <option>kit 2 - BL-M</option>
@@ -223,7 +195,7 @@ export default function Registration() {
         {existCPF ? (
           ""
         ) : (
-          <Button hidden={loading} onClick={handleForm}>
+          <Button type="submit" hidden={loading}>
             Cadastrar
           </Button>
         )}
