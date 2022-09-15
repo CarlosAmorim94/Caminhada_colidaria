@@ -15,9 +15,10 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
 import type { NextPage } from "next";
 import { cpf } from "cpf-cnpj-validator";
+import { User } from "../../types/users";
 
 const Registration: NextPage = () => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");
@@ -42,6 +43,7 @@ const Registration: NextPage = () => {
     equipe: team,
     kit: kit,
   };
+
   const handleForm = async () => {
     setLoading(true);
     if (
@@ -78,7 +80,7 @@ const Registration: NextPage = () => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
 
-      let uuid = getRandomIntInclusive(200, 600);
+      let uuid = getRandomIntInclusive(200, 999);
 
       const existUuid = numeros.includes(uuid);
       if (!existUuid) {
@@ -90,7 +92,7 @@ const Registration: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    let cpfList: any[] = [];
+    let cpfList: string[] = [];
     users.map((user) => {
       cpfList.push(user.cpf);
     });
@@ -118,8 +120,9 @@ const Registration: NextPage = () => {
       kit != ""
     ) {
       setLoading(true);
+    } else {
+      setLoading(false);
     }
-    setLoading(false);
   }, [loading]);
 
   return (
@@ -128,8 +131,8 @@ const Registration: NextPage = () => {
         <title>Registro</title>
       </Head>
       <Content
-      // action="https://formsubmit.co/circuitosolidario@hotmail.com"
-      // method="POST"
+        action="https://formsubmit.co/circuitosolidario@hotmail.com"
+        method="POST"
       >
         <input
           type="hidden"

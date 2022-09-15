@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../../Firebase/firebase";
 import { Container, Table, TableHeadColumn } from "./styles";
 import TableLine from "../../components/TableLine";
+import { User } from "../../types/users";
 
 const Admin: React.FC = () => {
-  const [users, setUsers] = useState<any[]>([]);
-  const [originalUsers, setOriginalUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [originalUsers, setOriginalUsers] = useState<User[]>([]);
   const [size, setSize] = useState("");
   const [kit, setKit] = useState("");
 
@@ -21,7 +22,7 @@ const Admin: React.FC = () => {
     getUsers();
   }, []);
 
-  function handleKit(e: any) {
+  function handleKit(e: React.ChangeEvent<HTMLSelectElement>) {
     setKit(e.target.value);
   }
   useEffect(() => {
@@ -48,7 +49,7 @@ const Admin: React.FC = () => {
     return filteredUsers;
   }
 
-  function handleFilter(e: any) {
+  function handleFilter(e: React.ChangeEvent<HTMLSelectElement>) {
     setSize(e.target.value);
   }
 
