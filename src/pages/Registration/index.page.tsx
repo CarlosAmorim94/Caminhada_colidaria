@@ -12,16 +12,16 @@ import InputMask from "react-input-mask";
 import Head from "next/head";
 
 export default function Registration() {
-  //const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [team, setTeam] = useState("");
-  //const [kit, setKit] = useState("");
+  const [kit, setKit] = useState("");
   const [existCPF, setExistCPF] = useState(false);
-  //const [isValidCPF, setIsValidCPF] = useState(false);
+  const [isValidCPF, setIsValidCPF] = useState(false);
   const [loading, setLoading] = useState(false);
 
   /* const userCollectionRef = collection(firestore, "users");
@@ -154,7 +154,7 @@ export default function Registration() {
             type="email"
             placeholder="Digite seu E-mail"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={() => {}}
           />
           <label htmlFor="name">Nome:</label>
           <input
@@ -164,7 +164,7 @@ export default function Registration() {
             type="text"
             placeholder="Digite seu Nome"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={() => {}}
           />
 
           <label htmlFor="cpf">CPF:</label>
@@ -176,7 +176,7 @@ export default function Registration() {
             type="string"
             placeholder="Digite seu CPF"
             value={CPF}
-            onChange={(e) => setCPF(e.target.value)}
+            onChange={() => {}}
           />
           {/* {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
           {isValidCPF ? "" : <Error>CPF inválido!</Error>} */}
@@ -189,7 +189,7 @@ export default function Registration() {
             name="phone"
             placeholder="Digite seu telefone"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={() => {}}
           />
           <label htmlFor="team">Equipe:</label>
           <input
@@ -199,16 +199,11 @@ export default function Registration() {
             type="text"
             placeholder="Digite o nome da sua Equipe"
             value={team}
-            onChange={(e) => setTeam(e.target.value)}
+            onChange={() => {}}
           />
 
           <label htmlFor="kit">Escolha seu kit:</label>
-          <Select
-            required
-            id="kit"
-            name="kit"
-            onChange={(e) => setKit(e.target.value)}
-          >
+          <Select required id="kit" name="kit" onChange={() => {}}>
             <option></option>
             <option>kit 1</option>
             <option>kit 2 - BL-M</option>
