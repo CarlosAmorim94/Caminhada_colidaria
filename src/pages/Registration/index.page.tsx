@@ -5,30 +5,26 @@ import {
   Content,
   FieldSetInformation,
   Legend,
-  Error,
   LoadingForm,
   Select,
 } from "./styles";
 import InputMask from "react-input-mask";
-import { firestore } from "../../Firebase/firebase";
-import { addDoc, collection, getDocs } from "firebase/firestore";
 import Head from "next/head";
-import { cpf } from "cpf-cnpj-validator";
 
 export default function Registration() {
-  const [users, setUsers] = useState<any[]>([]);
+  //const [users, setUsers] = useState<any[]>([]);
   const [id, setId] = useState<number>();
   const [email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [team, setTeam] = useState("");
-  const [kit, setKit] = useState("");
+  //const [kit, setKit] = useState("");
   const [existCPF, setExistCPF] = useState(false);
-  const [isValidCPF, setIsValidCPF] = useState(false);
+  //const [isValidCPF, setIsValidCPF] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const userCollectionRef = collection(firestore, "users");
+  /* const userCollectionRef = collection(firestore, "users");
 
   const emailResponse = `Olá ${name}, sua inscrição foi efetuada com sucesso! seu ID: ${id} confira os dados: CPF: ${CPF} , Telefone: ${phone}, Equipe: ${team}, Kit escolhido: ${kit}`;
 
@@ -40,10 +36,10 @@ export default function Registration() {
     telefone: phone,
     equipe: team,
     kit: kit,
-  };
+  }; */
 
   const handleForm = async () => {
-    setLoading(true);
+    /* setLoading(true);
     if (
       CPF != "" &&
       email != "" &&
@@ -54,23 +50,24 @@ export default function Registration() {
     ) {
       await addDoc(userCollectionRef, cadastro);
     }
-    setLoading(false);
+    setLoading(false); */
+    alert("Cadastro Encerrado! Novas inscrições no ano que vem");
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getUsers();
-  }, []);
+  }, []); */
 
-  const numeros: any[] = [];
+  /*  const numeros: any[] = [];
   users.map((user) => {
     numeros.push(user.numero);
-  });
+  }); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const fetchData = async () => {
       function getRandomIntInclusive(min: number, max: number) {
         min = Math.ceil(min);
@@ -87,9 +84,9 @@ export default function Registration() {
     };
 
     fetchData();
-  }, []);
+  }, []); */
 
-  useEffect(() => {
+  /*  useEffect(() => {
     let cpfList: string[] = [];
     users.map((user) => {
       cpfList.push(user.cpf);
@@ -106,9 +103,9 @@ export default function Registration() {
     } else {
       setIsValidCPF(cpf.isValid(CPF));
     }
-  }, [CPF]);
+  }, [CPF]); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (
       CPF != "" &&
       email != "" &&
@@ -121,7 +118,11 @@ export default function Registration() {
     } else {
       setLoading(false);
     }
-  }, [loading]);
+  }, [loading]); */
+
+  useEffect(() => {
+    alert("Cadastro Encerrado! Novas inscrições no ano que vem");
+  }, []);
 
   return (
     <Container>
@@ -129,7 +130,7 @@ export default function Registration() {
         <title>Registro</title>
       </Head>
       <Content
-        action="https://formsubmit.co/circuitosolidario@hotmail.com"
+        //action="https://formsubmit.co/circuitosolidario@hotmail.com"
         method="POST"
       >
         <input
@@ -138,11 +139,11 @@ export default function Registration() {
           value="https://caminhadasolidaria.vercel.app/Payment"
         />
 
-        <input type="hidden" name="_autoresponse" value={emailResponse} />
+        {/* <input type="hidden" name="_autoresponse" value={emailResponse} /> */}
         <FieldSetInformation>
           <Legend>Dados para cadastro:</Legend>
 
-          <label htmlFor="id">Numeração: {id}</label>
+          <label htmlFor="id">Numeração: Inscrições encerradas!</label>
           <input id="id" value={id} type="hidden" name="id" />
 
           <label htmlFor="email">E-mail:</label>
@@ -177,8 +178,8 @@ export default function Registration() {
             value={CPF}
             onChange={(e) => setCPF(e.target.value)}
           />
-          {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
-          {isValidCPF ? "" : <Error>CPF inválido!</Error>}
+          {/* {existCPF ? <Error>CPF já cadastrado!</Error> : ""}
+          {isValidCPF ? "" : <Error>CPF inválido!</Error>} */}
 
           <label htmlFor="phone">Telefone:</label>
           <InputMask

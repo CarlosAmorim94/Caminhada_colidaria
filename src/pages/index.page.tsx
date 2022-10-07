@@ -35,8 +35,12 @@ import {
 import Whats from "/public/image/whats.svg";
 import Gmail from "/public/image/gmail.svg";
 import Sponsors from "../components/Sponsors";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    alert("Cadastro Encerrado! Novas inscrições no ano que vem");
+  }, []);
   return (
     <Container>
       <Head>
